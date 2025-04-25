@@ -4,13 +4,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class JobService {
     private final JobRepository jobRepository;
-    public JobService (JobService jobService) {
-        this.jobRepository = jobService.jobRepository;
+    public JobService (JobRepository jobRepository) {
+        this.jobRepository = jobRepository;
     }
     public Iterable<Job> viewJobList() {
         return jobRepository.findAll();
     }
-    public Job viewJobDetails(Long jobID) {
+    public Job viewJobDetails(String jobID) {
         return jobRepository.findByID(jobID)
                 .orElseThrow(() -> new JobNotFoundException(jobID));
     }
@@ -20,11 +20,11 @@ public class JobService {
         }
         return jobRepository.save(job);
     }
-    public void removeJobFromCatalog(long jobID){
+    public void removeJobFromCatalog(String jobID){
         jobRepository.deleteByID(jobID);
     }
-    public Job editJobDetails(long jobID,Job job){
-        return jobRepository.findByID(jobID)
+    public Job editJobDetails(String jobID,Job job){
+        return jobRepository.findByID(String.valueOf(jobID))
                 .map (existingJob -> {
                     var jobToUpdate = new Job(
                             existingJob.jobID(),

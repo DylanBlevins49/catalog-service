@@ -7,10 +7,10 @@ import jakarta.validation.constraints.Pattern;
 public record Job(
        @NotBlank (message = "The Job ID must be defined.")
        @Pattern(
-               regexp = "^([0-9])$",
+               regexp = "[0-9a-zA-Z]",
                message = "The Job ID must be valid."
        )
-       long jobID,
+       String jobID,
 
        @NotBlank(
                message = "The Job title must be defined."

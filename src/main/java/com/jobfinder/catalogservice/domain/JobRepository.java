@@ -3,9 +3,9 @@ import java.util.Optional;
 
 public interface JobRepository {
     Iterable<Job> findAll();
-    Optional<Job> findByID(long jobID);
-    boolean existsByID(long jobID);
+    Optional<Job> findByID(String jobID);
+    boolean existsByID(String jobID);
     Job save(Job job);
-    void deleteByID(long jobID);
+    void deleteByID(String jobID);
 
 }

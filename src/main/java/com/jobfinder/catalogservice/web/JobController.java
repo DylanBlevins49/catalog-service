@@ -18,7 +18,7 @@ public class JobController {
         return jobService.viewJobList();
     }
     @GetMapping("{jobID}")
-    public Job getByjobID(@PathVariable long jobID) {
+    public Job getByjobID(@PathVariable String jobID) {
         return jobService.viewJobDetails(jobID);
     }
     @PostMapping
@@ -28,11 +28,11 @@ public class JobController {
     }
     @DeleteMapping ("{jobID}")
     @ResponseStatus (HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable long jobID) {
+    public void delete(@PathVariable String jobID) {
         jobService.removeJobFromCatalog(jobID);
     }
     @PutMapping("{jobID}")
-    public Job put(@PathVariable long jobID, @Valid @RequestBody Job job) {
+    public Job put(@PathVariable String jobID, @Valid @RequestBody Job job) {
         return jobService.editJobDetails(jobID, job);
     }
 }

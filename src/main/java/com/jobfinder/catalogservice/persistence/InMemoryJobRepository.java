@@ -16,12 +16,12 @@ public Iterable<Job> findAll(){
     return jobs.values();
 }
 @Override
-public Optional<Job> findByID(long jobID) {
+public Optional<Job> findByID(String jobID) {
     return existsByID (jobID) ? Optional.of(jobs.get(jobID)) :
             Optional.empty();
 }
 @Override
-public boolean existsByID(long jobID){
+public boolean existsByID(String jobID){
     return jobs.get(jobID) != null;
 }
 @Override
@@ -30,6 +30,6 @@ public Job save (Job job){
     return job;
 }
 @Override
-public void deleteByID(long jobID) {
+public void deleteByID(String jobID) {
     jobs.remove(jobID);
 }}

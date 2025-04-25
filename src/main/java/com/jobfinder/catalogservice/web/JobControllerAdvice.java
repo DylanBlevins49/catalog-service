@@ -27,7 +27,7 @@ public class JobControllerAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidExceptions(MethodArgumentNotValidException ex) {
-        var errors = new Hashmap<String, String> ();
+        var errors = new HashMap<String, String> ();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
