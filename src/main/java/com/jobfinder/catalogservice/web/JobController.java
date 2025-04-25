@@ -2,6 +2,7 @@ package com.jobfinder.catalogservice.web;
 
 import com.jobfinder.catalogservice.domain.Job;
 import com.jobfinder.catalogservice.domain.JobService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class JobController {
     }
     @PostMapping
     @ResponseStatus (HttpStatus.CREATED)
-    public Job post(@RequestBody Job job) {
+    public Job post(@Valid @RequestBody Job job) {
         return jobService.addJobToCatalog(job);
     }
     @DeleteMapping ("{jobID}")
@@ -31,7 +32,7 @@ public class JobController {
         jobService.removeJobFromCatalog(jobID);
     }
     @PutMapping("{jobID}")
-    public Job put(@PathVariable long jobID, @RequestBody Job job) {
+    public Job put(@PathVariable long jobID, @Valid @RequestBody Job job) {
         return jobService.editJobDetails(jobID, job);
     }
 }
