@@ -10,8 +10,8 @@ public class JobService {
     public Iterable<Job> viewJobList() {
         return jobRepository.findAll();
     }
-    public Job viewJobById(Long id) {
-        return jobRepository.findbyID(jobID)
+    public Job viewJobDetails(Long jobID) {
+        return jobRepository.findByID(jobID)
                 .orElseThrow(() -> new JobNotFoundException(jobID));
     }
     public Job addJobToCatalog(Job job){
@@ -24,7 +24,7 @@ public class JobService {
         jobRepository.deleteByID(jobID);
     }
     public Job editJobDetails(long jobID,Job job){
-        return jobRepository.findbyID(jobID)
+        return jobRepository.findByID(jobID)
                 .map (existingJob -> {
                     var jobToUpdate = new Job(
                             existingJob.jobID(),
@@ -35,6 +35,6 @@ public class JobService {
                             job.skill2());
                             return jobRepository.save(jobToUpdate);
         })
-                .orElseGet(() -> addJobToCatalog(Job));
+                .orElseGet(() -> addJobToCatalog(job));
     }
 }

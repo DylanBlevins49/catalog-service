@@ -8,5 +8,4 @@ public record Job(
        String skill1,
        String skill2
 
-) {
-}
+) {}

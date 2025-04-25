@@ -26,10 +26,10 @@ public boolean existsByID(long jobID){
 }
 @Override
 public Job save (Job job){
-    jobs.put(job.jobID, job);
+    jobs.put(String.valueOf(job.jobID()), job);
     return job;
 }
 @Override
-public void delteByID(long jobID) {
-    job.remove(jobID);
+public void deleteByID(long jobID) {
+    jobs.remove(jobID);
 }}

@@ -1,11 +1,11 @@
 package com.jobfinder.catalogservice.domain;
-import java.awt.print.Book;
 import java.util.Optional;
 
 public interface JobRepository {
     Iterable<Job> findAll();
-    Optional<Job> findByID(Long id);
-    boolean existsByID(Long id);
+    Optional<Job> findByID(long jobID);
+    boolean existsByID(long jobID);
     Job save(Job job);
-    void deleteByID(Job jobID);
+    void deleteByID(long jobID);
+
 }
