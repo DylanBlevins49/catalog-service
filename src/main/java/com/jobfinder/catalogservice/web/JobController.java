@@ -18,7 +18,7 @@ public class JobController {
         return jobService.viewJobList();
     }
     @GetMapping("{jobID}")
-    public Job getByjobID(@PathVariable String jobID) {
+    public Job getByJobID(@PathVariable String jobID) {
         return jobService.viewJobDetails(jobID);
     }
     @PostMapping
